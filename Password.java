@@ -12,20 +12,25 @@ public class Password {
         return password;
     }
 
-    void checklength(String password){
+    String checklength(String password){
 
         if(password.length()< 8){
             System.out.println("Weak Password");
+            return "Weak";
         }else{
             System.out.println("Good Password");
+            return "Strong";
         }
     }
-    void checkChar(String password){
+    String checkChar(String password){
         Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher("I am a string");
         boolean b = m.find();
         if (!b){
             System.out.println("There is a special character in my string");
+            return "Special";
+        }else{
+            return "Null";
         }
     }
     
@@ -41,8 +46,17 @@ public class Password {
         System.out.println("Please enter password: ");
         password = myObj.nextLine();
         System.out.println("You entered: " + password + "\n");
-        pass.checklength(password);
-        pass.checkChar(password);
+        String a =pass.checklength(password);
+        String b =pass.checkChar(password);
+
+        if(a == "Strong" && b == "Special"){
+            System.out.println("Level 3 Password");
+        }else if(a == "Strong" || b == "Special"){
+            System.out.println("Level 2 Password");
+        }else{
+            System.out.println("Level 1 Password");
+        }
+        
         myObj.close();
 
     }
