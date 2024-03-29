@@ -34,10 +34,5 @@ public class Password {
         pass.checklength(password);
         myObj.close();
 
-        // Tokenize the string using split method:
-        // Read 
-                    
-
-        //Hello
     }
 }
