@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Password {
     private String password;
@@ -18,6 +20,14 @@ public class Password {
             System.out.println("Good Password");
         }
     }
+    void checkChar(String password){
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher("I am a string");
+        boolean b = m.find();
+        if (!b){
+            System.out.println("There is a special character in my string");
+        }
+    }
     
     public static void main(String[] args) {
         String password;
@@ -32,6 +42,7 @@ public class Password {
         password = myObj.nextLine();
         System.out.println("You entered: " + password + "\n");
         pass.checklength(password);
+        pass.checkChar(password);
         myObj.close();
 
     }
